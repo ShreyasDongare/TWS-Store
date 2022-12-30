@@ -1,9 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useCartContext } from "../Context/CartContext";
 
 const Product_ = ({ item }) => {
-  const { id, productName, image, price } = item;
-
+  const { id, productName, image, price, stock } = item;
+  const { addToCart } = useCartContext();
   return (
     <div className="flex flex-col capitalize " key={id}>
       <div className="relative">
@@ -21,11 +22,20 @@ const Product_ = ({ item }) => {
           <p className="text-sm md:text-base">&#8377;{price}</p>
         </div>
       </div>
-      <NavLink to={`/cart`}>
-        <button className="btn  w-full shadow-md shadow-teal-600 hover:btnhover duration-300 ">
-          <span className="">Add to cart</span>
+      {stock > 0 ? (
+        <NavLink
+          to={`/cart`}
+          onClick={() => addToCart(id, productName, price, image)}
+        >
+          <button className="btn  w-full shadow-md shadow-teal-600 hover:btnhover duration-300 ">
+            Add to cart
+          </button>
+        </NavLink>
+      ) : (
+        <button className="btn bg-slate-400  w-full shadow-md shadow-slate-400  duration-300 ">
+          Add to cart
         </button>
-      </NavLink>
+      )}
     </div>
   );
 };
