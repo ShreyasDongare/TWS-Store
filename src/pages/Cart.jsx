@@ -40,11 +40,11 @@ const Cart = () => {
           <h3 className=" self-center justify-self-center">Remove Item </h3>
         </div>
         {cart ? (
-          <div className="grid grid-cols-6 my-4 ">
+          <div className=" my-4 ">
             {cart.map((item) => {
               const { id, price, productName, image } = item;
               return (
-                <div key={id}>
+                <div key={id} className="grid grid-cols-6">
                   <div className="col-span-3 flex items-center my-2">
                     <img src={image} className="h-14 pr-5" alt={productName} />
                     <p>{productName}</p>
