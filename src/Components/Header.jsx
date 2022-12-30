@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { MdClose } from "react-icons/md";
+import { useCartContext } from "../Context/CartContext";
 
 
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const {cart} = useCartContext()
 
   return (
     <header className=" w-full h-16 flex px-6 justify-between sticky top-0 items-center bg-teal-50 shadow-lg z-50">
@@ -39,7 +41,7 @@ const Header = () => {
           >
             <HiOutlineShoppingCart size={28} />
             <div className="h-4 w-4  bg-[#16989c] flex items-center justify-center rounded-full absolute -top-[5px] left-4">
-              <span className="text-[10px] text-white">10</span>
+              <span className="text-[10px] text-white">{cart.length}</span>
             </div>
           </NavLink>
         </li>
@@ -89,7 +91,7 @@ const Header = () => {
             >
               <HiOutlineShoppingCart size={28} />
               <div className="h-4 w-4  bg-[#16989c] flex items-center justify-center rounded-full absolute top-[39px] left-4 ">
-                <span className="text-[10px] text-white ">10</span>
+                <span className="text-[10px] text-white ">{cart.length}</span>
               </div>
             </NavLink>
           </li>
