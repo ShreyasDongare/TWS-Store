@@ -1,20 +1,26 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import data from "../data";
 import reducer from "../Reducer/cart_Reducer";
+import { useNavigate } from "react-router-dom";
+
 const CartContext = createContext();
+
 
 const initialState = {
   cart: [],
   data: data,
-  total_Product: "",
-  total_Amount: "",
+  
 };
 
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addToCart = (id, productName, price, image) => {
-    dispatch({ type: "ADDTOCART", payload: { id, productName, price, image } });
+  const addToCart = (id, productName, price, image,isInCart) => {
+    dispatch({
+      type: "ADDTOCART",
+      payload: { id, productName, price, image, isInCart },
+    });
+    
   };
 
   const removeCartItem = (id) => {
@@ -33,11 +39,16 @@ const CartProvider = ({ children }) => {
     setPerson({ ...person, [name]: value });
   };
   // console.log(person);
-
+const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(person.firstName && person.lastName && person.email && person.number){
+       navigate("/finalreview");
+    }
   };
 
+
+ 
   return (
     <CartContext.Provider
       value={{

@@ -1,8 +1,9 @@
 import React from "react";
 import Grid_View from "./Grid_View";
-import data from "../data";
+import { useCartContext } from "../Context/CartContext";
 
 const ProductList = () => {
+  const {data} = useCartContext()
 
   return(
   <div className="my-12">

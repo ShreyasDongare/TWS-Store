@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { useCartContext } from "../Context/CartContext";
 
+
+
 const CheckOutForm = () => {
+
   const { handleChange, handleSubmit, person } = useCartContext();
   return (
     <div className="max-w-screen-lg mx-auto  my-20 ">
@@ -62,11 +63,11 @@ const CheckOutForm = () => {
             />
           </div>
           <div className="flex items-center justify-center ">
-              <button className="btn" type="submit">
-            <NavLink to={"/finalreview"}>
+
+              <button className="btn" type="submit" >
                 Submit To checkout
-            </NavLink>
               </button>
+            
           </div>
         </form>
       </div>

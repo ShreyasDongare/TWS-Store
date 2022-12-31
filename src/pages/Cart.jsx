@@ -46,7 +46,7 @@ const Cart = () => {
               return (
                 <div key={id} className="grid grid-cols-6">
                   <div className="col-span-3 flex items-center my-2">
-                    <img src={image} className="h-14 pr-5" alt={productName} />
+                    <img src={image} className="h-14 mr-5 rounded" alt={productName} />
                     <p>{productName}</p>
                   </div>
                   <h3 className="flex items-center">qty</h3>
